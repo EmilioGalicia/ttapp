@@ -1,0 +1,155 @@
+<project name="salesforce" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties" prefix="propfile"/>
+    <available file="build.properties" property="isFileAvail" />
+    <fail unless="isFileAvail" message="The build.properties file does not exist" />
+
+    <property name="config.env.file.basepath" value="./appConfig/appConfig.xml"/>
+    <property name="config.env.file.dev" value="${config.env.file.basepath}.dev"/>
+    <property name="config.env.file.qa" value="${config.env.file.basepath}.qa"/>
+    <property name="config.env.file.stage" value="${config.env.file.basepath}.stage"/>
+    <property name="config.env.file.prod" value="${config.env.file.basepath}.prod"/>
+    <property name="config.file.path" value="./src/staticresources/appConfig.resource"/>
+    <property name="configsite.env.file.sourcepath" value="./appConfig/Cloudcaller.remoteSite"/>
+    <property name="configsite.env.file.dev" value="${configsite.env.file.sourcepath}.dev"/>
+    <property name="configsite.env.file.qa" value="${configsite.env.file.sourcepath}.qa"/>
+    <property name="configsite.env.file.stage" value="${configsite.env.file.sourcepath}.stage"/>
+    <property name="configsite.env.file.prod" value="${configsite.env.file.sourcepath}.prod"/>
+    <property name="configsite.file.path" value="./src/remoteSiteSettings/Cloudcaller.remoteSite"/>
+
+    <target name="-initProps">
+        <property file="${propfilename}.properties" prefix="personalPropsFile"/>
+        <available file="${propfilename}.properties" property="isPersonalFileAvail" />
+        <fail unless="isPersonalFileAvail" message="Your ${propfilename}.properties file does not exist" />
+    </target>
+
+    <target name="copyEnvFileDev">
+        <echo message="Copying ${config.env.file.dev}"/>
+        <copy overwrite="true" file="${config.env.file.dev}" tofile="${config.file.path}"/>
+        <echo message="Copying ${configsite.env.file.dev}"/>
+        <copy overwrite="true" file="${configsite.env.file.dev}" tofile="${configsite.file.path}"/>
+    </target>
+
+    <target name="copyEnvFileQA">
+        <echo message="Copying ${config.env.file.qa}"/>
+        <copy overwrite="true" file="${config.env.file.qa}" tofile="${config.file.path}"/>
+        <echo message="Copying ${configsite.env.file.qa}"/>
+        <copy overwrite="true" file="${configsite.env.file.qa}" tofile="${configsite.file.path}"/>
+    </target>
+
+    <target name="copyEnvFileStage">
+        <echo message="Copying ${config.env.file.stage}"/>
+        <copy overwrite="true" file="${config.env.file.stage}" tofile="${config.file.path}"/>
+        <echo message="Copying ${configsite.env.file.stage}"/>
+        <copy overwrite="true" file="${configsite.env.file.stage}" tofile="${configsite.file.path}"/>
+    </target>
+
+    <target name="copyEnvFileProd">
+        <echo message="Copying ${config.env.file.prod}"/>
+        <copy overwrite="true" file="${config.env.file.prod}" tofile="${config.file.path}"/>
+        <echo message="Copying ${configsite.env.file.prod}"/>
+        <copy overwrite="true" file="${configsite.env.file.prod}" tofile="${configsite.file.path}"/>
+    </target>
+
+    <target name="actDeprecatedAnn" >
+  		<replaceregexp file="./src/classes/CloudCaller_SoftphoneController.cls"
+  			match="//\s*@[d|D]eprecated" replace="@deprecated" flags="g" byline="true"/>
+  	</target>
+
+	<target name="retrieve" depends="-initProps">
+		<mkdir dir="src"/>
+		<!-- Retrieve the contents into another directory -->
+        <echo message="Retrieving using usr=${personalPropsFile.sf.username} pwd=${personalPropsFile.sf.password} svrurl=${propfile.sf.serverurl}"/>
+		<sf:retrieve username="${personalPropsFile.sf.username}" password="${personalPropsFile.sf.password}" serverurl="${propfile.sf.serverurl}" retrieveTarget="src" unpackaged="retrieveSource/package.xml"/>
+    </target>
+
+    <target name="deployAndRunAllTests" depends="-initProps, copyEnvFileDev">
+        <echo message="Deploying using usr=${personalPropsFile.sf.username} pwd=${personalPropsFile.sf.password} svrurl=${propfile.sf.serverurl}"/>
+
+      <sf:deploy username="${personalPropsFile.sf.username}"
+        password="${personalPropsFile.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="false"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+    
+    <!-- Build to deploy with no tests, just in case is needed. -->
+    <target name="deployNoTests" depends="-initProps, copyEnvFileDev">
+        <echo message="Deploying using usr=${personalPropsFile.sf.username} pwd=${personalPropsFile.sf.password} svrurl=${propfile.sf.serverurl}"/>
+
+      <sf:deploy username="${personalPropsFile.sf.username}"
+        password="${personalPropsFile.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="false"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+
+    <!-- used by jenkins -->
+    <target name="deployAndRunAllTestsCIDev" depends="copyEnvFileDev">
+      <sf:deploy username="${propfile.dev.sf.username}"
+        password="${propfile.dev.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+
+     <!-- CCio QA org with Custom Domain -->
+    <target name="deployAndRunAllTestsQACustDom">
+        <echo message="Running deployAndRunAllTestsQA2 with username ${propfile.qa.sf.custdom.username}"/>
+      <sf:deploy username="${propfile.qa.sf.custdom.username}"
+        password="${propfile.qa.sf.custdom.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+
+     <!-- CCio QA org -->
+    <target name="deployAndRunAllTestsQA1">
+        <echo message="Running deployAndRunAllTestsQA2 with username ${propfile.qa.sf.2.username}"/>
+      <sf:deploy username="${propfile.qa.sf.2.username}"
+        password="${propfile.qa.sf.2.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+
+    <!-- Gary's QA org -->
+	<target name="deployAndRunAllTestsQA2">
+        <echo message="Running deployAndRunAllTestsQA1 with username ${propfile.qa.sf.username}"/>
+      <sf:deploy username="${propfile.qa.sf.username}"
+        password="${propfile.qa.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>   
+
+    <!-- used by jenkins -->
+    <target name="deployAndRunAllTestsCIQA" depends="copyEnvFileQA, deployAndRunAllTestsQA1, deployAndRunAllTestsQACustDom"/>
+
+    <!-- used by jenkins -->
+    <target name="deployAndRunAllTestsCIStage" depends="copyEnvFileStage">
+      <sf:deploy username="${propfile.stage.sf.username}"
+        password="${propfile.stage.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+
+    <!-- used by jenkins -->
+	<target name="deployAndRunAllTestsCIMP" depends="copyEnvFileProd, actDeprecatedAnn">
+        <echo message="Running deployAndRunAllTestsMP ******"/>
+      <sf:deploy username="${propfile.mp.sf.username}"
+        password="${propfile.mp.sf.password}"
+        serverurl="${propfile.sf.serverurl}"
+        runAllTests="true"
+        logType="Detail"
+        deployRoot="src"/>
+    </target>
+</project>
