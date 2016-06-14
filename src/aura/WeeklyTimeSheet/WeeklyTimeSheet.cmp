@@ -1,0 +1,60 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" controller="WeeklyTimeSheetUtil">
+	<aura:attribute name="weekLabel" type="String" default=""/>
+	<aura:attribute name="columnItems" type="Map" default=""/>
+	<aura:attribute name="totalHours" type="Decimal" default=""/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	<div class="slds-grid slds-grid--vertical-align-center slds-grid--align-center">
+		<div class="slds-grid slds-wrap slds-grid--pull-padded">
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="M" dayNumber="0"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="T" dayNumber="1"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="W" dayNumber="2"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="Th" dayNumber="3"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="F" dayNumber="4"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="S" dayNumber="5"/>
+			</div>
+			<div class="slds-col--padded slds-size--1-of-7">
+				<c:WeeklyTimeSheetColumn columnDate="Su" dayNumber="6"/>
+			</div>
+		</div>
+	</div>
+
+	<div class="slds-grid slds-grid--vertical-align-center slds-grid--align-center">
+		<div class="slds-panel__section">
+			<h3 class="slds-text-heading--small slds-m-bottom--medium">Week Summary</h3>
+			<div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+				<span class="slds-form-element__label">Total Hours</span>
+				<div class="slds-form-element__control">
+					<span class="slds-form-element__static"><ui:outputNumber value="{!v.totalHours}" />
+				</span>
+				</div>
+			</div>
+			<div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+				<span class="slds-form-element__label">Current Week</span>
+				<div class="slds-form-element__control">
+					<span class="slds-form-element__static"><ui:outputText value="{!v.weekLabel}" /></span>
+				</div>
+			</div>
+			<!--
+			<div class="slds-form-element slds-hint-parent slds-has-divider__bottom">
+				<div class="slds-form-element__control">
+					<span class="slds-form-element__static">
+						<ui:button aura:id="button" class="slds-button" label="Approve Timesheet" press="{!c.approveTimeSheet}"/></span>
+				</div>
+			</div>
+		    -->
+		</div>
+	</div>
+	
+</aura:component>

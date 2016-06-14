@@ -1,0 +1,46 @@
+<aura:component controller="WeeklyTimeSheetUtil">
+	<aura:attribute name="columnDate" type="String"/>
+	<aura:attribute name="dayNumber" type="Double"/>
+	<aura:attribute name="columnItems" type="Time_Entry__c[]"/>
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	<table class="slds-table slds-table--bordered slds-table--cell-buffer">
+		<thead>
+			<tr class="slds-text-heading--label">
+		        <th scope="col">
+					<div class="slds-truncate">{!v.columnDate}</div>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<aura:iteration items="{!v.columnItems}" var="item">
+				<tr >
+					<div class="slds-panel__section">
+						<div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+							<span class="slds-form-element__label">Project:</span>
+							<div class="slds-form-element__control">
+								<span class="slds-form-element__static"><ui:outputText value="{!item.timetrackerapp__Project_ID__r.Name}" title="Project"/>
+								</span>
+							</div>
+						</div>
+						<div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+							<span class="slds-form-element__label">Task:</span>
+							<div class="slds-form-element__control">
+								<span class="slds-form-element__static"><ui:outputText value="{!item.timetrackerapp__Task_ID__r.Name}" title="Project"/>
+								</span>
+							</div>
+						</div>
+						<div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+							<span class="slds-form-element__label">Hours:</span>
+							<div class="slds-form-element__control">
+								<span class="slds-form-element__static"><ui:outputNumber value="{!item.timetrackerapp__Hours__c}"/></span>
+							</div>
+						</div>
+					</div>
+				</tr>
+
+			</aura:iteration>
+		</tbody>
+	</table>
+</aura:component>

@@ -1,0 +1,14 @@
+<aura:component controller="TimerUtil">
+	
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:attribute name="timeEntryId" type="Id"/>
+	<aura:attribute name="hours" type="Decimal"/>
+	<aura:attribute name="startedAt" type="String" default=""/>
+	<aura:attribute name="isRunning" type="Boolean" default="false"/>
+    <aura:if isTrue="{!v.isRunning}">
+		<ui:button class="slds-button--destructive" label="Stop" press="{!c.stopTimer}"/>
+		<aura:set attribute="else">
+			<ui:button class="slds-button--neutral" label="{! (v.hours != null) ? 'Resume' : 'Start'}" press="{!c.startTimer}"/>
+		</aura:set>
+	</aura:if> 
+</aura:component>

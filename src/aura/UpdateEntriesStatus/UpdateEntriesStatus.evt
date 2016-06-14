@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="Fired when a Timer is activated">
+    <aura:attribute name="timerEntries" type="Time_Entry__c[]" description="The result of the search, which could be an empty array"/>
+</aura:event>
