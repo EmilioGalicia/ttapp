@@ -47,6 +47,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Users Assigned To Projects</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -57,6 +58,7 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>project_id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Project assigned to the User</description>
         <externalId>false</externalId>
         <label>Project</label>
@@ -72,6 +74,7 @@
     <fields>
         <fullName>user_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>User assigned to the Project</description>
         <externalId>false</externalId>
         <label>User</label>

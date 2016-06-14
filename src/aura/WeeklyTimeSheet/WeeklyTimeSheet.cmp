@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" controller="WeeklyTimeSheetUtil">
+<aura:component access="GLOBAL" implements="flexipage:availableForAllPageTypes,force:appHostable" controller="WeeklyTimeSheetUtil">
 	<aura:attribute name="weekLabel" type="String" default=""/>
 	<aura:attribute name="columnItems" type="Map" default=""/>
 	<aura:attribute name="totalHours" type="Decimal" default=""/>

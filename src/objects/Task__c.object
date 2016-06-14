@@ -47,6 +47,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Tasks related to a Project</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -58,6 +59,7 @@
     <fields>
         <fullName>Add_to_All_Current_Projects__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>If true, will add the task to all existing projects</description>
         <externalId>false</externalId>
         <label>Add to All Current Projects</label>
@@ -67,6 +69,7 @@
     <fields>
         <fullName>deactivated__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>Determines if the task has been deactivated or not</description>
         <externalId>false</externalId>
         <label>deactivated</label>
@@ -76,6 +79,7 @@
     <fields>
         <fullName>is_default__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>Will be included to all future projects when checked</description>
         <externalId>false</externalId>
         <label>Common task (add to all future projects)</label>
@@ -84,6 +88,7 @@
     </fields>
     <fields>
         <fullName>task_id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Harvest Task ID</description>
         <externalId>true</externalId>
         <label>Task ID</label>

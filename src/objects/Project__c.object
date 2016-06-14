@@ -49,6 +49,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Represents a Project record</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -60,6 +61,7 @@
     <fields>
         <fullName>Active__c</fullName>
         <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
         <description>Whether the project is active or archived.</description>
         <externalId>false</externalId>
         <label>Active</label>
@@ -69,6 +71,7 @@
     <fields>
         <fullName>Client__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>Client related to the Project</description>
         <externalId>false</externalId>
         <label>Client</label>
@@ -81,6 +84,7 @@
     </fields>
     <fields>
         <fullName>Ends_on__c</fullName>
+        <deprecated>false</deprecated>
         <description>End Date of the Project</description>
         <externalId>false</externalId>
         <inlineHelpText>Optional</inlineHelpText>
@@ -91,6 +95,7 @@
     </fields>
     <fields>
         <fullName>Notes__c</fullName>
+        <deprecated>false</deprecated>
         <description>Additional information</description>
         <externalId>false</externalId>
         <inlineHelpText>Notes can be any additional information you’d like to include, such as a statement of work or comments on the project scope. Administrators can change who sees project notes in Account Settings.</inlineHelpText>
@@ -102,6 +107,7 @@
     </fields>
     <fields>
         <fullName>Project_Code__c</fullName>
+        <deprecated>false</deprecated>
         <description>The Project Code helps identity your project.</description>
         <externalId>false</externalId>
         <inlineHelpText>Optional. The Project Code helps identity your project. You can use any combo of numbers or letters.</inlineHelpText>
@@ -114,6 +120,7 @@
     </fields>
     <fields>
         <fullName>Starts_on__c</fullName>
+        <deprecated>false</deprecated>
         <description>Start Date of the Project</description>
         <externalId>false</externalId>
         <inlineHelpText>Optional</inlineHelpText>
@@ -124,6 +131,7 @@
     </fields>
     <fields>
         <fullName>project_id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Harvest Project ID</description>
         <externalId>true</externalId>
         <label>ProjectID</label>

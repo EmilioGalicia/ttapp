@@ -1,5 +1,8 @@
 public with sharing class WeeklyTimeSheetUtil {
 	
+	/**
+	* @summary Date when the week started
+	*/
 	private static Date weekStart () {
 		Datetime now = Datetime.now();
 		Date myDate = Date.today();
@@ -65,7 +68,7 @@ public with sharing class WeeklyTimeSheetUtil {
 
 	/*
 	* @return approves a time sheet and locks all records
-	* not being used at this time due execution errors
+	* not being used at this time due to execution errors
 	
 	@AuraEnabled
 	public static Boolean lockRecords () {
@@ -91,16 +94,15 @@ public with sharing class WeeklyTimeSheetUtil {
 	*/
 
 	/**
-	* @return the time entries of the current week
+	*	@param day is the number of the day of the week 1 - Monday , 2 = Tuesday...
+	* 	@return the time entries of the current week
 	*/
 	@AuraEnabled
 	public static List<timetrackerapp__Time_Entry__c> getCurrentWeekEntriesByDay (Double day) {
 	
 		Date lookupDate = weekStart();
-		System.debug('day ' + lookupDate);
-		
 		lookupDate = lookupDate.addDays(Integer.valueOf(day)+1);
-		System.debug('day ' + lookupDate);
+		
 		List<timetrackerapp__Time_Entry__c> resultLst = new List<timetrackerapp__Time_Entry__c>();
 		for (timetrackerapp__Time_Entry__c te : [SELECT timetrackerapp__Hours__c, 
 												timetrackerapp__Project_ID__r.Name,
@@ -112,7 +114,6 @@ public with sharing class WeeklyTimeSheetUtil {
 			resultLst.add(te);
 			
 		}
-		System.debug(resultLst);
 		return resultLst;
 	}
 

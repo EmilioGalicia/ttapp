@@ -49,6 +49,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Records the amount of time spent on a Project Task</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -60,6 +61,7 @@
     <fields>
         <fullName>Client_ID__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>Client ID that the time entry is associated with</description>
         <externalId>false</externalId>
         <label>Client-ID</label>
@@ -72,6 +74,7 @@
     </fields>
     <fields>
         <fullName>ElapsedTimerTime__c</fullName>
+        <deprecated>false</deprecated>
         <description>Elapsed minutes in current timer</description>
         <externalId>false</externalId>
         <formula>(NOW()-Timer_Started_At__c)*24*60</formula>
@@ -86,6 +89,7 @@
     </fields>
     <fields>
         <fullName>Hours_With_Timer__c</fullName>
+        <deprecated>false</deprecated>
         <description>The current amount of time tracked, if timer is running</description>
         <externalId>false</externalId>
         <label>Hours With Timer</label>
@@ -98,6 +102,7 @@
     </fields>
     <fields>
         <fullName>Hours_Without_Timer__c</fullName>
+        <deprecated>false</deprecated>
         <description>The current amount of time tracked, if timer is not running</description>
         <externalId>false</externalId>
         <label>Hours Without Timer</label>
@@ -110,6 +115,7 @@
     </fields>
     <fields>
         <fullName>Hours__c</fullName>
+        <deprecated>false</deprecated>
         <description>Number of (decimal time) hours tracked in this time entry</description>
         <externalId>false</externalId>
         <label>Hours</label>
@@ -123,6 +129,7 @@
     <fields>
         <fullName>Is_Closed__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>true if the time entry has been approved via Approval, false if un-approved</description>
         <externalId>false</externalId>
         <label>Is Closed</label>
@@ -131,6 +138,7 @@
     </fields>
     <fields>
         <fullName>Notes__c</fullName>
+        <deprecated>false</deprecated>
         <description>Time entry notes</description>
         <externalId>false</externalId>
         <label>Notes</label>
@@ -142,6 +150,7 @@
     <fields>
         <fullName>Project_ID__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>Project ID that the time entry is associated with</description>
         <externalId>false</externalId>
         <label>Project-ID</label>
@@ -154,6 +163,7 @@
     </fields>
     <fields>
         <fullName>Spent_At__c</fullName>
+        <deprecated>false</deprecated>
         <description>Date of the time entry</description>
         <externalId>false</externalId>
         <label>Spent At</label>
@@ -164,6 +174,7 @@
     <fields>
         <fullName>Task_ID__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>Task ID that the time entry is associated with</description>
         <externalId>false</externalId>
         <label>Task-ID</label>
@@ -176,6 +187,7 @@
     </fields>
     <fields>
         <fullName>Timer_Started_At__c</fullName>
+        <deprecated>false</deprecated>
         <description>Time (UTC) and date that timer was started (if tracking by duration)</description>
         <externalId>false</externalId>
         <label>Timer Started At</label>
@@ -186,6 +198,7 @@
     <fields>
         <fullName>User_ID__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
         <description>User ID that tracked this time entry</description>
         <externalId>false</externalId>
         <label>User-ID</label>

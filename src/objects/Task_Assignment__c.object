@@ -47,6 +47,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <description>Links a Task to a Project</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -57,6 +58,7 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>project_id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Lookup to Project</description>
         <externalId>false</externalId>
         <label>Project</label>
@@ -71,6 +73,7 @@
     </fields>
     <fields>
         <fullName>task_assignment_id__c</fullName>
+        <deprecated>false</deprecated>
         <description>Harvest Task Assignment ID</description>
         <externalId>true</externalId>
         <label>Task Assignment ID</label>
@@ -82,6 +85,7 @@
     </fields>
     <fields>
         <fullName>task_id__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Task</label>
         <referenceTo>Task__c</referenceTo>

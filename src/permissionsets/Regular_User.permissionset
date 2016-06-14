@@ -32,6 +32,7 @@
         <apexClass>WeeklyTimeSheetUtil</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <description>Time Tracker Regular User</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AccountNumber</field>
@@ -427,7 +428,7 @@
         <field>User_Assignment__c.user_id__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <label>Project Manager</label>
+    <label>Regular User</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
